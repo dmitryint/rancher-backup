@@ -1,4 +1,4 @@
-image: "postgres:latest"
+image: "{% if docker_image is defined %}{{ docker_image }}{% else %}postgres:latest{% endif %}"
 commands:
   {% if env.POSTGRES_USER and env.POSTGRES_DB %}
   {# When user, password and database setted  #}

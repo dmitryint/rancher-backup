@@ -1,4 +1,4 @@
-image: "mongo:latest"
+image: "{% if docker_image is defined %}{{ docker_image }}{% else %}mongo:latest{% endif %}"
 commands:
   {% if env.MONGO_USER and env.MONGO_PASS %}
   - "mongodump --host {{ ip }} -u {{ env.MONGO_USER }} -p {{ env.MONGO_PASS }} --gzip --archive > {{ target_dir }}/databases.archive.gz"

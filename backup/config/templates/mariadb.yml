@@ -1,4 +1,4 @@
-image: "mariadb:latest"
+image: "{% if docker_image is defined %}{{ docker_image }}{% else %}mariadb:latest{% endif %}"
 commands:
   {% if env.MYSQL_USER and env.MYSQL_DATABASE %}
   {# When user, password and database setted #}
