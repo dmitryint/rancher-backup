@@ -42,6 +42,7 @@ If you should to not dump a particular service witch is supported, you can add l
 First it search on label called `backup.type` and if doesn't found, it search on image name.
 It's mean that if you should backup MySQL database, you need to set label `backup.type=mysql` or use docker image that contains name `mysql`.
 
+To use the same Docker image under which the container runs, you need to set label `backup.use_same_image=true`.
 
 ## Backup options
 
