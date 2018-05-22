@@ -69,9 +69,10 @@ class Backup(object):
                                 logger.debug("Found IP %s", context["ip"])
                                 break
 
+                        # Get taget Docker image
                         if ('labels' in service['launchConfig'] and 'backup.use_same_image' in service['launchConfig'][
                             'labels'] and service['launchConfig']['labels']['backup.use_same_image'] == "true"):
-                            context["docker_image"] = service['launchConfig']['imageUuid'].split(':')[-1:]
+                            context["docker_image"] = ':'.join(service['launchConfig']['imageUuid'].split(':')[1:])
 
                         # Get Taget backup
                         context["target_dir"] = backupPath + "/" + service['stack']['name'] + "/" + service['name']
