@@ -1,4 +1,4 @@
-image: "mysql:latest"
+image: "{% if docker_image is defined %}{{ docker_image }}{% else %}mysql:latest{% endif %}"
 commands:
   {% if env.MYSQL_USER and env.MYSQL_DATABASE %}
   {# When user, password and database setted #}
